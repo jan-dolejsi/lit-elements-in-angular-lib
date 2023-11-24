@@ -177,3 +177,51 @@ end of demo_app page
 ```
 
 As a last step, we can expose the lit-element's `name` attribute on the Angular `ngx-hello-world.component.ts`.
+
+Modify the `NgxHelloWorldComponent` class in `ngx-hello-world.component.ts` by adding a field:
+
+```javascript
+export class NgxHelloWorldComponent {
+  @Input() name!: string;
+}
+```
+
+... and by refering to it by interpolation in the template:
+
+```html
+    <my-element name="{{ name }}">
+      <p>This is child content</p>
+    </my-element>
+```
+
+The `!` in the `name` field declaration makes this a required attribute, so we must provide it in the `app.component.html`:
+
+```html
+<hw-ngx-hello-world name="Angular Demo App"></hw-ngx-hello-world>
+```
+
+So what are we missing?
+
+Testing this: https://www.thisdot.co/blog/how-to-integrate-web-components-using-lit-in-angular
+
+In `angular_workspace` run
+
+```bash
+npm install --save @webcomponents/webcomponentsjs
+```
+
+Update the [angular.json](angular_workspace/angular.json) as described in the article.
+
+As a result, the page now shows
+
+```txt
+demo_app page
+
+ngx-hello-world works!
+
+Hello, Angular Demo App!
+Click Count: 2
+This is child content
+
+end of demo_app page
+```

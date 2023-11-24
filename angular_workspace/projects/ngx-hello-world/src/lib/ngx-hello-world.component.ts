@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import "lit-element-starter-ts";
@@ -12,7 +12,7 @@ import "lit-element-starter-ts";
       ngx-hello-world works!
     </p>
 
-    <my-element name="Angular">
+    <my-element name="{{ name }}">
       <p>This is child content</p>
     </my-element>
   `,
@@ -21,5 +21,5 @@ import "lit-element-starter-ts";
   schemas: [CUSTOM_ELEMENTS_SCHEMA ],
 })
 export class NgxHelloWorldComponent {
-
+  @Input() name!: string;
 }
